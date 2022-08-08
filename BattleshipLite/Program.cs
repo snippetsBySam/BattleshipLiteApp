@@ -10,6 +10,8 @@ namespace BattleshipLite
     {
         static void Main(string[] args)
         {
+
+            Console.ReadLine();
         }
     }
 }
