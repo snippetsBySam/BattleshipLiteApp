@@ -21,6 +21,10 @@ namespace BattleshipLite
             Console.WriteLine("Created by snippetsBySam");
             Console.WriteLine();
         }
-        
+
+        private static PlayerInfoModel CreatePlayer()
+        {
+
+        }
     }
 }
