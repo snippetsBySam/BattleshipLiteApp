@@ -38,6 +38,11 @@ namespace BattleshipLiteLibrary
             }
         }
 
+        public static bool PlaceShip(PlayerInfoModel model, string location)
+        {
+            throw new NotImplementedException();
+        }
+
         private static void AddGridSpot(PlayerInfoModel model, string letter, int number)
         {
             GridSpotModel spot = new GridSpotModel
