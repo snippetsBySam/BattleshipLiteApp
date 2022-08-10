@@ -35,6 +35,9 @@ namespace BattleshipLite
             // Ask the user for their 5 ship placements
             PlaceShips(output);
             // Clear
+            Console.Clear();
+
+            return output;
         }
 
         private static string AskForUsersName()
