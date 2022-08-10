@@ -10,8 +10,17 @@ namespace BattleshipLite
     {
         static void Main(string[] args)
         {
+            WelcomeMessage();
 
             Console.ReadLine();
         }
+
+        private static void WelcomeMessage()
+        {
+            Console.WriteLine("Welcome to Battleship Lite");
+            Console.WriteLine("Created by snippetsBySam");
+            Console.WriteLine();
+        }
+        
     }
 }
