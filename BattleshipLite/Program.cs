@@ -14,10 +14,56 @@ namespace BattleshipLite
         {
             WelcomeMessage();
 
-            PlayerInfoModel player1 = CreatePlayer("Player 1");
-            PlayerInfoModel player2 = CreatePlayer("Player 2");
+            PlayerInfoModel activePlayer = CreatePlayer("Player 1");
+            PlayerInfoModel opponent = CreatePlayer("Player 2");
+            PlayerInfoModel winner = null;
+
+            do
+            {
+                // Display grid from activePlayer on where they fired
+                DisplayShotGrid(activePlayer);
+
+                // Ask player 1 for a shot
+                // Determine if it is a valid shot
+                // Determine shot results
+                // Determine if the game is over
+                // If over, set activePlayer as the winner
+                // else, swap positions (activePlayer to opponent)
+
+            } while (winner == null);
 
             Console.ReadLine();
+        }
+
+        private static void DisplayShotGrid(PlayerInfoModel activePlayer)
+        {
+            string curentRow = activePlayer.ShotGrid[0].SpotLetter;
+            foreach (var gridSpot in activePlayer.ShotGrid)
+            {
+                if (gridSpot.SpotLetter != curentRow)
+                {
+                    Console.WriteLine();
+                    curentRow = gridSpot.SpotLetter;
+                }
+                
+
+                if (gridSpot.Status == GridSpotStatus.Empty)
+                {
+                    Console.Write($"{gridSpot.SpotLetter}{gridSpot.SpotNumber} ");
+                }
+                else if (gridSpot.Status == GridSpotStatus.Hit)
+                {
+                    Console.Write(" X ");
+                }
+                else if (gridSpot.Status == GridSpotStatus.Miss)
+                {
+                    Console.Write(" O ");
+                }
+                else
+                {
+                    Console.Write(" ? ");
+                }
+            }
         }
 
         private static void WelcomeMessage()
