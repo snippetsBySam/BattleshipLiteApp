@@ -23,16 +23,41 @@ namespace BattleshipLite
                 // Display grid from activePlayer on where they fired
                 DisplayShotGrid(activePlayer);
 
-                // Ask player 1 for a shot
-                // Determine if it is a valid shot
-                // Determine shot results
-                // Determine if the game is over
-                // If over, set activePlayer as the winner
-                // else, swap positions (activePlayer to opponent)
+                RecordPlayerShot(activePlayer, opponent);
+
+                bool doesGameContinue = GameLogic.PlayerStillActive(opponent);
+
+                if (doesGameContinue == true)
+                {
+                    // swap positions
+                    (activePlayer, opponent) = (opponent, activePlayer);
+                }
+                else
+                {
+                    winner = activePlayer;
+                }
 
             } while (winner == null);
 
+            IdentifyWinner(winner);
             Console.ReadLine();
+        }
+
+        private static void IdentifyWinner(PlayerInfoModel winner)
+        {
+            Console.WriteLine($"Congratulations to {winner.UsersName} for winning!");
+            Console.WriteLine($"{winner.UsersName} took {GameLogic.GetShotCount(winner)} shots.");
+        }
+
+        private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponent)
+        {
+            // Asks for a shot (i.e. B")
+            // Determine what row and column that is - split it apart
+            // Determine if that is a valid shot
+            // Go back to the beginning if not a valid shot
+
+            // Determine shot results
+            //Record results
         }
 
         private static void DisplayShotGrid(PlayerInfoModel activePlayer)
@@ -44,8 +69,7 @@ namespace BattleshipLite
                 {
                     Console.WriteLine();
                     curentRow = gridSpot.SpotLetter;
-                }
-                
+                }                
 
                 if (gridSpot.Status == GridSpotStatus.Empty)
                 {
