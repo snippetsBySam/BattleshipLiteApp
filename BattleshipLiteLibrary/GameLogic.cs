@@ -9,6 +9,11 @@ namespace BattleshipLiteLibrary
 {
     public static class GameLogic
     {
+        public static int GetShotCount(PlayerInfoModel winner)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void InitializeGrid(PlayerInfoModel model)
         {
             List<string> letters = new List<string>
@@ -39,6 +44,11 @@ namespace BattleshipLiteLibrary
         }
 
         public static bool PlaceShip(PlayerInfoModel model, string location)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool PlayerStillActive(PlayerInfoModel opponent)
         {
             throw new NotImplementedException();
         }
