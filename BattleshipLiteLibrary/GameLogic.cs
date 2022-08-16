@@ -9,9 +9,18 @@ namespace BattleshipLiteLibrary
 {
     public static class GameLogic
     {
-        public static int GetShotCount(PlayerInfoModel winner)
+        public static int GetShotCount(PlayerInfoModel player)
         {
-            throw new NotImplementedException();
+            int shotCount = 0;
+
+            foreach (var shot in player.ShotGrid)
+            {
+                if (shot.Status == GridSpotStatus.Miss || shot.Status == GridSpotStatus.Hit)
+                {
+                    shotCount++;
+                }
+            }
+            return shotCount;
         }
 
         public static bool IdentifyShotResult(PlayerInfoModel opponent, string row, int column)
