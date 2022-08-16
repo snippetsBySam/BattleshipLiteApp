@@ -14,6 +14,11 @@ namespace BattleshipLiteLibrary
             throw new NotImplementedException();
         }
 
+        public static bool IdentifyShotResult(PlayerInfoModel opponent, string row, int column)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void InitializeGrid(PlayerInfoModel model)
         {
             List<string> letters = new List<string>
@@ -43,12 +48,37 @@ namespace BattleshipLiteLibrary
             }
         }
 
+        public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool PlaceShip(PlayerInfoModel model, string location)
         {
             throw new NotImplementedException();
         }
 
-        public static bool PlayerStillActive(PlayerInfoModel opponent)
+        public static bool PlayerStillActive(PlayerInfoModel player)
+        {
+            bool isActive = false;
+
+            foreach (var ship in player.ShipLocations)
+            {
+                if (ship.Status != GridSpotStatus.Sunk)
+                {
+                    isActive = true;
+                    break;
+                }
+            }
+            return isActive;
+        }
+
+        public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column)
         {
             throw new NotImplementedException();
         }
