@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -158,9 +159,23 @@ namespace BattleshipLiteLibrary
             return isValidInput;
         }
 
-        public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column)
+        public static bool ValidateShot(PlayerInfoModel player, string row, int column)
         {
-            throw new NotImplementedException();
+            bool isValidShot = false;
+
+            foreach (var gridSpot in player.ShotGrid)
+            {
+                if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)
+                {
+                    if (gridSpot.Status == GridSpotStatus.Empty)
+                    {
+                        isValidShot = true;
+                        break;
+                    }
+                }
+            }
+
+            return isValidShot;
         }
 
         private static void AddGridSpot(PlayerInfoModel model, string letter, int number)
