@@ -27,7 +27,18 @@ namespace BattleshipLiteLibrary
 
         public static bool IdentifyShotResult(PlayerInfoModel opponent, string row, int column)
         {
-            throw new NotImplementedException();
+            bool isAHit = false;
+
+            foreach (var ship in opponent.ShipLocations)
+            {
+                if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
+                {
+                    isAHit = false;
+                    break;
+                }
+            }
+
+            return isAHit;
         }
 
         public static void InitializeGrid(PlayerInfoModel model)
