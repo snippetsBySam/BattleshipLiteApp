@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BattleshipLiteLibrary
@@ -134,7 +135,27 @@ namespace BattleshipLiteLibrary
 
         public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
         {
-            throw new NotImplementedException();
+            string row = "";
+            int column = 0;
+
+            bool isValidShotInput = ValidateShotInput(shot);
+            if (isValidShotInput == false)
+            {
+                throw new ArgumentException("This was an invalid shot type.", "shot");
+            }
+
+            char[] shotArray = shot.ToCharArray();
+
+            row = shotArray[0].ToString();
+            column = int.Parse(shotArray[1].ToString());
+            return (row, column);
+        }
+
+        private static bool ValidateShotInput(string shot)
+        {
+            Regex shotPattern = new Regex(@"[a-eA-E][1-5]");
+            bool isValidInput = shotPattern.IsMatch(shot);
+            return isValidInput;
         }
 
         public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column)
