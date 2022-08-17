@@ -118,7 +118,18 @@ namespace BattleshipLiteLibrary
 
         private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)
         {
-            throw new NotImplementedException();
+            bool isValidLocation = false;
+
+            foreach (var spot in model.ShotGrid)
+            {
+                if (spot.SpotLetter == row.ToUpper() && spot.SpotNumber == column)
+                {
+                    isValidLocation = true;
+                    break;
+                }
+            }
+
+            return isValidLocation;
         }
 
         public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
