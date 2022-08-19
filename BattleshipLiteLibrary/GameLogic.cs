@@ -164,7 +164,8 @@ namespace BattleshipLiteLibrary
             string row = "";
             int column = 0;
 
-            if (shot.Length != 2)
+            bool isValidShotInput = ValidateShotInput(shot);
+            if (isValidShotInput == false)
             {
                 throw new ArgumentException("This was an invalid shot type.", "shot");
             }

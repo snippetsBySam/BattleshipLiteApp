@@ -58,8 +58,16 @@ namespace BattleshipLite
             do
             {
                 string shot = AskForShot();
-                (row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);
-                isValidShot = GameLogic.ValidateShot(activePlayer, row, column);
+                try
+                {
+                    (row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);
+                    isValidShot = GameLogic.ValidateShot(activePlayer, row, column);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    isValidShot=false;
+                }
 
                 if (isValidShot == false)
                 {
