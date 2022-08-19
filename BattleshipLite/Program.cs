@@ -65,8 +65,8 @@ namespace BattleshipLite
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    isValidShot=false;
+                    Console.WriteLine("Error: " + ex.Message);
+                    isValidShot = false;
                 }
 
                 if (isValidShot == false)
@@ -158,7 +158,16 @@ namespace BattleshipLite
                 Console.Write($"Where do you want to place ship number {model.ShipLocations.Count + 1}: ");
                 string location = Console.ReadLine();
 
-                bool isValidLocation = GameLogic.PlaceShip(model, location);
+                bool isValidLocation = false;
+
+                try
+                {
+                    isValidLocation = GameLogic.PlaceShip(model, location);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
 
                 if (isValidLocation == false)
                 {
