@@ -57,7 +57,7 @@ namespace BattleshipLite
 
             do
             {
-                string shot = AskForShot();
+                string shot = AskForShot(activePlayer);
                 try
                 {
                     (row, column) = GameLogic.SplitShotIntoRowAndColumn(shot);
@@ -65,7 +65,6 @@ namespace BattleshipLite
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error: " + ex.Message);
                     isValidShot = false;
                 }
 
@@ -80,9 +79,9 @@ namespace BattleshipLite
             GameLogic.MarkShotResult(activePlayer, row, column, isAHit);
         }
 
-        private static string AskForShot()
+        private static string AskForShot(PlayerInfoModel player)
         {
-            Console.Write("Please enter your shot selection: ");
+            Console.Write($"{player.UsersName}, please enter your shot selection: ");
             string output = Console.ReadLine();
 
             return output;
@@ -116,6 +115,7 @@ namespace BattleshipLite
                     Console.Write(" ? ");
                 }
             }
+            Console.WriteLine();
             Console.WriteLine();
         }
 
