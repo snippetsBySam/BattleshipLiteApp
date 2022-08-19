@@ -108,6 +108,7 @@ namespace BattleshipLite
                     Console.Write(" ? ");
                 }
             }
+            Console.WriteLine();
         }
 
         private static void WelcomeMessage()

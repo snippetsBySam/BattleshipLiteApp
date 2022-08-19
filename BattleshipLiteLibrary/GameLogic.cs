@@ -34,6 +34,7 @@ namespace BattleshipLiteLibrary
                 if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
                 {
                     isAHit = true;
+                    ship.Status = GridSpotStatus.Sunk;
                     break;
                 }
             }
@@ -178,7 +179,7 @@ namespace BattleshipLiteLibrary
 
         private static bool ValidateShotInput(string shot)
         {
-            Regex shotPattern = new Regex(@"[a-eA-E][1-5]");
+            Regex shotPattern = new Regex(@"^[a-eA-E][1-5]$");
             bool isValidInput = shotPattern.IsMatch(shot);
             return isValidInput;
         }
